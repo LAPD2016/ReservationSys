@@ -1,6 +1,12 @@
 package dw317.lib;
 import java.io.*;
 
+
+/**
+ * 
+ * @author Ali Dali
+ *
+ **/
 public class Name implements Serializable {
 
 
@@ -10,31 +16,60 @@ public class Name implements Serializable {
 	private String lastName;
 	private static final long serialVersionUID = 42031768871L;
 
+	/**
+	 * Constructer: Sets values
+	 * @param firstName
+	 * @param lastName
+	 */
 	public Name(String firstName, String lastName){
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
 
+	/**
+	 * Gets firstName
+	 * @return firstName
+	 */
 	public String getFirstName() {
 		return firstName;
 	}
 
+	/**
+	 * Gets lastName
+	 * @return lastName
+	 */
 	public String getLastName() {
 		return lastName;
 	}
 
+	/**
+	 * Sets Value to firstName
+ 	 * @param firstName
+	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
+	/**
+	 * Sets value to LastName 
+	 * @param lastName
+	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
+	/**
+	 * Concatinates firstName and lastName
+	 * @return firstName +" "+ lastName
+	 */
 	public String getFullName(){
 		return firstName +" "+ lastName;
 	}
 
+	/* 
+	 * @override
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString(){
 		return firstName +" "+ lastName;
 	}
@@ -79,7 +114,15 @@ public class Name implements Serializable {
 		return true;
 	}
 	
+	/**
+	 * Validate name, checks if name is null, empty or invalid
+	 * @return True 
+	 */
 	private boolean isValide(){
+		
+		if(firstName == null || lastName == null){
+			throw new IllegalArgumentException();
+		}
 		
 		for(int i = 0; i < firstName.length(); i++){
 			if(!Character.isAlphabetic(firstName.charAt(i)) && firstName.charAt(i) != '\'' 
